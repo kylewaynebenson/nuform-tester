@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Nuform tester</title>
+    <script src="js/fontsampler.js" type="text/javascript" ></script>
+    <script src="js/fontsampler-skin.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/0.6.5/opentype.min.js" integrity="sha512-bRz6QInwm6Dnvgt0oVNbSjs0eyLXmAttb8t/jZWbBTTnUrs0O3HtNYE6pf3K0gO5RwUJZ50OzJcIiYi8lWj7EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="css/index.css?v=0.1" type="text/css">
+  </head>
+  <body>
+
+<article>
+    <div id="demo1" class="bg-red">abcdefghik</div>
+      <script>
+      var fonts = [
+          { 
+              name: "OZIK Black", 
+              files: ["fonts/OZIK-Black.woff", "fonts/OZIK-Black.woff2"] 
+          },
+          { 
+              name: "OZIK Bold", 
+              files: ["fonts/OZIK-Bold.woff", "fonts/OZIK-Bold.woff2"] 
+          },
+          { 
+              name: "OZIK Medium", 
+              files: ["fonts/OZIK-Medium.woff", "fonts/OZIK-Medium.woff2"] 
+          },
+          { 
+              name: "OZIK Regular", 
+              files: ["fonts/OZIK-Regular.woff", "fonts/OZIK-Regular.woff2"] 
+          },
+      ]
+      var options = {
+          lazyload: true,
+          order: [
+              ["fontfamily", "fontsize", "lineheight", "letterspacing", "alignment", "opentype"],
+              "tester",
+          ],
+          ui: {
+            // The actual input element for testing the webfonts
+            tester: {
+                // Set’s the contenteditable attribute
+                editable: true,
+                // The tester has it’s label disabled by default
+                label: false
+            },
+            // The font-size slider
+            fontsize: {
+                // Any CSS unit is valid (e.g. px, em, %, etc.)
+                unit: "vw",
+                init: "10",
+                min: .5,
+                max: 20,
+                step: .25,
+                // The text label to render for the element, set to false to disabled 
+                // rendering a label
+                label: "Size"
+            },
+            // The line-height slider
+            lineheight: {
+                unit: "%",
+                init: "100",
+                min: 90,
+                max: 160,
+                step: 5,
+                label: "Leading"
+            },
+            // The letter-spacing slider
+            letterspacing: {
+                unit: "em",
+                init: 0,
+                min: -.05,
+                max: .05,
+                step: 0.01,
+                label: "Letterspacing"
+            },
+            // The drop-down for picking fonts
+            fontfamily: {
+                label: "",
+                // Supply the exact name of the Font (fontname, not file!) to be selected
+                // and loaded first, by default the first font passed in
+                init: "<?= $item->font() ?>"
+            },
+            // The set of buttons controlling alignment
+            alignment: {
+                // Choices can an Array of strings used both as value and display label
+                // or the strings are separated by | to use as value|Display label
+                choices: ["left|L", "center|C", "right|R"],
+                // Has to be one of the above choices
+                init: "center",
+                label: ""
+            },
+            // A set of checkboxes; NOTE: No validation whatsoever if the font
+            // supports these opentype features
+            opentype: {
+                choices: ["liga|Ligatures"],
+                init: ["liga"],
+                label: "Features",
+                class: "dropdown",
+            }
+          }
+        }
+      var opentypeFont = opentype.load('fonts/OZIK-Bold.woff');
+      if (opentypeFont) {
+        console.log(hola);
+        // A set of checkboxes; NOTE: No validation whatsoever if the font
+        // supports these opentype features
+        options.ui.opentype =  {
+                choices: ["liga"],
+                init: ["liga"],
+                label: "Features",
+            } 
+        }    
+      var demo1 = new Fontsampler(document.getElementById("demo1"), fonts, options)
+      FontsamplerSkin(demo1)
+      demo1.init()
+      </script>
+</body>
+</html>

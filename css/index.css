@@ -1,0 +1,539 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --padding: calc(8px + 1.7vw) calc(8px + 2.4vw);
+  --padding-md: calc(6px + 1.35vw) calc(7px + 1.4vw);
+  --padding-sm: calc(5px + 1.1vw) calc(6px + 1.25vw);
+  --padding-xs: calc(3px + .25vw) calc(3px + .65vw);
+  --padding-xxs: calc(2px + .1vw) calc(2px + .3vw);
+  --margin-s: calc(3px + .65vw);
+  --margin-m: calc(5px + 1.25vw);
+  --margin-l: calc(7px + 1.7vw);
+  --margin-xl: calc(8px + 3.4vw);
+  --margin-xxl: calc(10px + 4vw);
+  --border: 2px solid;
+  --border-radius: 8px;
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  --color-black: #000;
+  --color-bg-black: #000;
+  --color-white: #fff;
+  --color-grey: #7C8DA6;
+  --color-soft-blue: #D7E7FF;
+  --color-soft-blue-solid: #D7E7FFFF;
+  --color-soft-blue-clear: #D7E7FF00;
+  --color-tan: #fcfff0;
+  --color-red: rgb(255, 60, 0);
+}
+
+html {
+  font-family: var(--font-family-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.4;
+  transition: color 700ms ease-in;
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
+}
+.bg-red {
+  background-color: var(--color-red);
+}
+.bg-tan {
+  background-color: var(--color-tan);
+}
+.bg-blue {
+  background-color: var(--color-soft-blue);
+}
+.bg-white {
+  background-color: var(--color-white);
+}
+.bg-black {
+  background-color: var(--color-bg-black);
+}
+.bg-grey {
+  background-color: var(--color-grey);
+}
+.color-grey {
+  color: var(--color-grey);
+}
+.color-black {
+  color: var(--color-black);
+}
+.padding {
+  padding: var(--padding);
+}
+.padding-sm {
+  padding: var(--padding-sm);
+}
+.padding-xs {
+  padding: var(--padding-xs);
+}
+.padding-xxs {
+  padding: var(--padding-xxs);
+}
+.color-white {
+  color: var(--color-white);
+}
+.color-tan {
+  color: var(--color-tan);
+}
+
+/* Font tester */
+.fsjs-skin {
+  opacity: 0;
+  border-top: var(--border) var(--color-blue);
+  position: relative;
+}
+.fsjs-skin.fsjs-initialized {
+  opacity: 1;
+  display: block;
+}
+.fsjs-skin .fsjs-block-tester {
+  transition: opacity 0.2s ease-out;
+  opacity: 1;
+}
+.fsjs-skin.fsjs-loading .fsjs-block-tester, .fsjs-skin.fsjs-timeout .fsjs-block-tester {
+  opacity: 0;
+}
+.fsjs-skin > .fsjs-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-image: var(--color-blue-gradient);
+  transition: color 0.2s ease-out;
+  color: var(--color-soft-blue);
+}
+.fsjs-skin:hover .fsjs-wrapper {
+  color: var(--color-grey);
+}
+@media screen and (max-width: 829px) {
+  .fsjs-skin .fsjs-block:not(.fsjs-block-fontsize, .fsjs-block-fontfamily, .fsjs-block-tester, .fsjs-block-type-textfield) {
+    display: none;
+  }
+}
+@media screen and (min-width: 830px) {
+  .fsjs-skin > .fsjs-wrapper {
+    flex-wrap: nowrap;
+  }
+}
+.fsjs-skin .fsjs-block-tester {
+  display: block;
+}
+.fsjs-skin .fsjs-block-tester .fsjs-element {
+  padding: var(--padding-xs);
+  margin-top: -1.5vw; 
+  margin-bottom: 1.5vw;
+}
+.fsjs-skin.text .fsjs-block-tester .fsjs-element {
+  column-count: 2;
+  column-gap: 2.5vw;
+  column-width: 350px;
+  padding: var(--padding-md);
+  width: 90%;
+  margin: -1.25vw auto 1.25vw auto;
+  max-width: 2000px;
+}
+
+.fsjs-skin .fsjs-block-tester .fsjs-element:focus {
+  
+}
+
+.fsjs-skin .fsjs-block,
+.fsjs-skin [data-axis-block] {
+  width: 100%;
+}
+.fsjs-skin .fsjs-block:not(.fsjs-block-type-textfield) {
+  box-sizing: border-box;
+  align-self: center;
+  position: relative;
+  padding: var(--padding-xs);
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  letter-spacing: 0.055em;
+  width: 100%;
+  border-radius: 2px;
+}
+.fsjs-skin .fsjs-block.fsjs-block-alignment, .fsjs-skin .fsjs-block.fsjs-block-opentype {
+  width: 35%;
+}
+.fsjs-skin .fsjs-block:not(.fsjs-block-alignment, .fsjs-block-opentype, .fsjs-block-tester, .fsjs-block-type-textfield) {
+  width: 50%;
+}
+
+.fsjs-skin [data-axis-block] {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.fsjs-skin .fsjs-label {
+  line-height: 1.5em;
+  font-size: .875rem;
+}
+.fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider > label > .fsjs-label-text {
+  display: none;
+}
+.fsjs-skin .fsjs-block-type-slider .fsjs-label,
+.fsjs-skin .fsjs-block-type-slidergroup .fsjs-label {
+  width: 100%;
+}
+.fsjs-skin .fsjs-block-type-slider .fsjs-label span:first-child,
+.fsjs-skin .fsjs-block-type-slidergroup .fsjs-label span:first-child {
+  margin-right: auto;
+}
+
+/* opentype dropdown menu */
+.fsjs-skin .fsjs-block-opentype {
+  position: relative;
+}
+.fsjs-skin .fsjs-block-opentype {
+  display: block;
+  justify-content: flex-start;
+}
+.fsjs-skin .fsjs-block-opentype:hover {
+  background: var(--color-soft-blue);
+}
+.fsjs-skin .fsjs-block-opentype [data-fsjs] {
+  position: absolute;
+  background-color: var(--color-white);
+  top: 0px;
+  left: 100%;
+  max-height: 140px;
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px 0px 0px var(--color-grey);
+}
+.fsjs-skin .fsjs-block-opentype:hover [data-fsjs] {
+  left: 0px;
+}
+.fsjs-skin [contenteditable] {
+  outline: none;
+  color: var(--color-black);
+}
+.fsjs-skin .fsjs-button, .fsjs-skin .fsjs-block-type-buttongroup button {
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  line-height: 1;
+  align-self: center;
+  width: 24px;
+  height: 24px;
+}
+.fsjs-skin .fsjs-button:hover, .fsjs-skin .fsjs-block-type-buttongroup button:hover {
+  background: var(--color-soft-blue);
+  color: var(--color-grey);
+}
+
+.fsjs-skin .fsjs-block-type-buttongroup button {
+  border-radius: 0;
+}
+.fsjs-skin .fsjs-block-type-buttongroup button:first-of-type {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.fsjs-skin .fsjs-block-type-buttongroup button:last-of-type {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.fsjs-skin .fsjs-block-type-buttongroup button + button {
+  border-right: 2px solid transparent;
+}
+.fsjs-skin .fsjs-block-type-checkboxes {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+}
+.fsjs-skin .fsjs-block-type-checkboxes [data-fsjs] label {
+  cursor: pointer;
+  padding: 5px;
+  flex-grow: 1;
+}
+.fsjs-skin .fsjs-block-type-checkboxes [data-fsjs] label input[type=checkbox] + span:before {
+  background: var(--color-soft-blue);
+}
+.fsjs-skin .fsjs-block-type-checkboxes [data-fsjs] label:hover input[type=checkbox] + span:before, .fsjs-skin .fsjs-block-type-checkboxes [data-fsjs] label:focus input[type=checkbox] + span:before {
+  background: var(--color-grey);
+}
+.fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+.fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive {
+  pointer-events: none;
+}
+.fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox]:checked + span:after {
+  background: var(--color-black);
+}
+.fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox] + span {
+  position: relative;
+  padding-left: 27px;
+}
+.fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox] + span:before, .fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox] + span:after {
+  content: " ";
+  display: block;
+  border-radius: 2px;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  height: 10px;
+  width: 10px;
+}
+.fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox]:checked + span:after {
+  border-radius: 0;
+  background: var(--color-black);
+  border: 0px solid var(--color-black);
+  border-radius: 2px;
+  padding: 0;
+  left: 6px;
+  top: 6px;
+}
+.fsjs-skin .dk-select,
+.fsjs-skin .dk-select *,
+.fsjs-skin .dk-select *:before,
+.fsjs-skin .dk-select *:after,
+.fsjs-skin .dk-select-multi,
+.fsjs-skin .dk-select-multi *,
+.fsjs-skin .dk-select-multi *:before,
+.fsjs-skin .dk-select-multi *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.fsjs-skin .dk-select,
+.fsjs-skin .dk-select-multi {
+  position: relative;
+  display: block;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.fsjs-skin .dk-selected {
+  min-width: 230px;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  background-color: transparent;
+  padding: 0.1em 0.5em 0;
+  padding-right: 1.5em;
+  line-height: 2em;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.fsjs-skin .dk-selected:before, .fsjs-skin .dk-selected:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+}
+.fsjs-skin .dk-selected:before {
+  top: 50%;
+  border: var(--border) transparent;
+  border-width: 0.25em 0.25em 0;
+  margin: -0.125em 0.5em 0 0;
+}
+.fsjs-skin .dk-selected:after {
+  top: 0;
+  height: 100%;
+  margin: 0 1.5em 0 0;
+}
+.fsjs-skin .dk-selected-disabled {
+  color: var(--color-grey);
+}
+.fsjs-skin .dk-select .dk-select-options {
+  position: absolute;
+  display: none;
+  left: 0;
+  right: 0;
+}
+.fsjs-skin .dk-select-open-up .dk-select-options {
+  border-radius: 2px 2px 0 0;
+  margin-bottom: -1px;
+  bottom: 100%;
+}
+.fsjs-skin .dk-select-open-down .dk-select-options {
+  border-radius: 0 0 2px 2px;
+  margin-top: -1px;
+  top: 100%;
+}
+.fsjs-skin .dk-select-multi .dk-select-options {
+  max-height: 10em;
+}
+.fsjs-skin .dk-select-options {
+  list-style: none;
+  margin: 0;
+  max-height: 75vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+  width: auto;
+  z-index: 100;
+  box-shadow: 3px 3px 0px 0px var(--color-grey);
+}
+.fsjs-skin .dk-select-options-highlight .dk-option-selected {
+  background-color: transparent;
+  color: inherit;
+}
+.fsjs-skin .dk-option {
+  padding: 0.1em 0.5em 0;
+  line-height: 2em;
+}
+.fsjs-skin .dk-select-options .dk-option-highlight {
+  background: var(--color-soft-blue);
+  color: var(--color-black);
+}
+.fsjs-skin .dk-select-options .dk-option-disabled {
+  color: var(--color-grey);
+  background-color: transparent;
+}
+.fsjs-skin .dk-select-options .dk-option-hidden {
+  display: none;
+}
+.fsjs-skin .dk-select-open-up .dk-select-options,
+.fsjs-skin .dk-select-open-down .dk-select-options,
+.fsjs-skin .dk-select-multi:focus .dk-select-options {
+  display: block;
+  background: var(--color-white);
+}
+.fsjs-skin .dk-selected:hover,
+.fsjs-skin .dk-selected:focus {
+  outline: none;
+  background: var(--color-soft-blue);
+  color: var(--color-black);
+}
+.fsjs-skin .dk-select-disabled {
+  opacity: 0.6;
+  background: var(--color-grey);
+  cursor: not-allowed;
+}
+.fsjs-skin .dk-select-disabled .dk-selected:hover, .fsjs-skin .dk-select-disabled .dk-selected:focus {
+  border-color: inherit;
+}
+.fsjs-skin .dk-select-disabled .dk-selected:hover:before, .fsjs-skin .dk-select-disabled .dk-selected:focus:before {
+  border-top-color: inherit;
+}
+.fsjs-skin .dk-select-disabled .dk-selected:hover:after, .fsjs-skin .dk-select-disabled .dk-selected:focus:after {
+  border-left-color: inherit;
+}
+.fsjs-skin select[data-dkcacheid] {
+  display: none;
+}
+.fsjs-skin .rangeSlider {
+  margin: 0.5em auto;
+}
+.fsjs-skin .rangeSlider,
+.fsjs-skin .rangeSlider__fill {
+  display: block;
+  border-radius: 2px;
+}
+.fsjs-skin .rangeSlider {
+  position: absolute;
+  top: 5px;
+  transform: translateY(50%);
+  left: 0px;
+  height: 14px;
+  z-index: 0;
+  background: var(--color-soft-blue);
+}
+.fsjs-skin .rangeSlider__horizontal {
+  height: 2px;
+  width: 100%;
+}
+
+.fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider > .rangeSlider {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+.fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:hover, .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:active {
+  background: var(--color-soft-blue);
+  color: var(--color-soft-blue);
+}
+.fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:hover .fsjs-skin .dk-selected:before, .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:active .fsjs-skin .dk-selected:before {
+  border-top-color: var(--color-black);
+}
+.fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox] + span:before, .fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox] + span:after {
+  border-color: var(--color-black);
+}
+.fsjs-skin .fsjs-button.fsjs-button-selected, .fsjs-skin .fsjs-block-type-buttongroup button.fsjs-button-selected {
+  color: var(--color-black);
+}
+.fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:hover > .rangeSlider, .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:active > .rangeSlider {
+  opacity: 1;
+}
+
+.fsjs-skin .rangeSlider--disabled {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+}
+.fsjs-skin .rangeSlider__fill {
+  background: var(--color-soft-blue);
+  position: absolute;
+}
+.fsjs-skin .rangeSlider__fill__horizontal {
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.fsjs-skin .rangeSlider__handle {
+  cursor: pointer;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  background: var(--color-black);
+  border-radius: 50%;
+  left: 0;
+}
+.fsjs-skin .rangeSlider__handle__horizontal {
+  top: -1px;
+}
+.fsjs-skin .rangeSlider__handle:after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background: transparent;
+  border-radius: 50%;
+}
+.fsjs-skin .fsjs-disabled .fsjs-label {
+  color: var(--color-grey);
+}
+.fsjs-skin .fsjs-disabled .rangeSlider {
+  pointer-events: none;
+  background-color: var(--color-grey);
+}
+.fsjs-skin .fsjs-disabled .rangeSlider .rangeSlider__handle,
+.fsjs-skin .fsjs-disabled .rangeSlider .rangeSlider__fill {
+  background-color: var(--color-grey);
+}
+.fsjs-skin .fsjs-disabled .dk-select .dk-selected {
+  color: var(--color-grey);
+}
+.fsjs-skin [data-fsjs-block=variation] {
+  display: none;
+}
+@supports (font-variation-settings: normal) {
+  .fsjs-skin [data-fsjs-block=variation] {
+    display: block;
+  }
+}
